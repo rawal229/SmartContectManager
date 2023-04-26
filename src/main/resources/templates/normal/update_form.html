@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update form</title>
+</head>
+<body>
+    
+    <section>
+        
+        <div class="card mr-3 ml-3">
+            <div class="card-body">
+                <h1 class="text-center">Update Your Contect</h1>
+                <div class="container-fluid mt-1">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <form action="#" th:object="${contect}" enctype="multipart/form-data" method="POST"
+                                th:action="@{/user/process-update}" class="mt-2">
+
+                                <input type="hidden" th:value="${contect.cId}" name="cId">
+
+                                <!-- First Name -->
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text mr-3">
+                                            <i class="fa fa-plus"></i>
+
+                                        </div>
+                                    </div>
+                                    <input th:value="${contect.name}" required type="text" id="firstName" name="name" placeholder="Enter name here" class="form-control">
+                                </div>
+
+                                <!-- Second Name -->
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text mr-3">
+                                            <i class="fas fa-user-alt"></i>
+
+                                        </div>
+                                    </div>
+                                    <input th:value="${contect.secondName}"  required type="text" id="secondName" name="secondName" placeholder="Enter nick name here" class="form-control">
+                                </div>
+
+                                <!-- Email field -->
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text mr-3">
+                                            <i class="fa-solid fa-envelope"></i>
+
+                                        </div>
+                                    </div>
+                                    <input th:value="${contect.email}"  required type="email" id="email" name="email" placeholder="Enter Email here" class="form-control">
+                                </div>
+
+                                <!-- Work field -->
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text mr-3">
+                                            <i class="fa-solid fa-briefcase"></i>
+
+                                        </div>
+                                    </div>
+                                    <input th:value="${contect.work}"  required type="text" id="work" name="work" placeholder="Enter work here" class="form-control">
+                                </div>
+
+                                <!-- Phone Number -->
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text mr-3">
+                                            <i class="fa-solid fa-phone"></i>
+
+                                        </div>
+                                    </div>
+                                    <input th:value="${contect.phone}"  required type="number" id="phone" name="phone" placeholder="Enter Phone number here" class="form-control">
+                                </div>
+
+                                 <!-- Contect Description -->
+                                 <div class="form-group mt-3">
+                                    
+                                    <textarea th:text="${contect.description}"  placeholder="Enter contect description" name="description" id="mytextarea" class="form-control" rows="10"></textarea>
+
+                                </div>
+
+                                <!-- Contect Image -->
+                                <div class="container">
+                                    <img style="width: 250px; height: 250px;" class="img-fluid my_profile_picture" th:src="@{'/image/'+${contect.image}}" alt="">
+                                </div>
+                                <div class="custom-file">
+                                    
+                                    <input type="file" name="image">
+                                </div>
+                                
+                                <div class="container text-center">
+                                    <button class="btn btn-outline-primary">Save Contact</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+            tinymce.init({
+              selector: '#mytextarea'
+            });
+          </script>
+
+    </section>
+
+</body>
+</html>

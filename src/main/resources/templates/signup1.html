@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+</head>
+
+<body>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-2">
+
+                    <div class="my-card ">
+
+                        <div class="container text-center">
+                            <img style="width: 80px;" th:src="@{/image/membership.png}" alt="">
+                        </div>
+
+                        <h1 class="text-center">Register here !!</h1>
+
+                        <form th:action="@{/do_register}" method="post" th:object="${user}">
+                            <!-- name field -->
+                            <div class="form-group">
+                                <label for="name_field">Username</label>
+                                <!-- <div class="input-group-prepend"> -->
+                                    <input name="name"
+                                     type="text"
+                                     class="form-control"
+                                     id="name_field"
+                                     placeholder="Enter your username"
+                                     required
+                                     th:value="${user.name}">
+                                <!-- </div> -->
+                            </div>
+                            <!-- email field -->
+                            <div class="form-group">
+                                <label for="email_field">Email address</label>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">@</div>
+                                    <input name="email"
+                                     type="email"
+                                     class="form-control" 
+                                     id="email_field"
+                                     aria-describedby="emailHelp" 
+                                     placeholder="Enter your email" 
+                                     required
+                                     th:value="${user.email}">
+                                </div>
+                            </div>
+                            <!-- password field -->
+                            <div class="form-group">
+                                <label for="password_field">Password</label>
+                                <input name="password"
+                                 type="password"
+                                 class="form-control" 
+                                 id="password_field"
+                                 placeholder="Enter your password">
+                            </div>
+                            <!-- user about field -->
+                            <div class="form-group">
+                                <textarea name="about"
+                                 placeholder="Enter something your self"
+                                 rows="7"
+                                 class="form-control"
+                                 th:value="${user.about}"
+                                 ></textarea>
+                            </div>
+                            <!-- terns and condition agreements -->
+                            <div class="form-group form-check">
+                                <input name="agreement"
+                                 type="checkbox"
+                                 name="agreement"
+                                  class="form-check-input"
+                                  id="agreement" />
+                                  <label for="agreement">Accept trems and conditions</label>
+                            </div>
+                            <!-- submit button field -->
+                            <div class="container text-center">
+                                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                                <!-- <button type="submit" class="btn bg-primary btn-block text-white">Submit</button> -->
+                                <button type="submit" class="btn bg-primary text-white">Submit</button>
+                                <button type="reset" class="btn btn-warning text-white">Reset</button>
+                            </div>
+                            <!-- 
+                                Bootstrep 4 class details
+                                btn-block -> button ko full vertical dikane keliye use
+
+                             -->
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
